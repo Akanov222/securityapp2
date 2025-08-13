@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: your_name
+      changes:
+        - insert:
+            tableName: person
+            columns:
+              - column:
+                  name: username
+                  value: "text_user1"
+              - column:
+                  name: password
+                  value: 111
+        - insert:
+            tableName: person
+            columns:
+              - column:
+                  name: username
+                  value: "text_user2"
+              - column:
+                  name: password
+                  value: 111
