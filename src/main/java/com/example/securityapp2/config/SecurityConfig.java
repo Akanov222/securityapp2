@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 @Configuration
 @EnableWebSecurity
@@ -40,7 +41,9 @@ public class SecurityConfig {
                         .logoutSuccessUrl("/auth/login")
                         .permitAll()
                 ) // Разрешаем выход всем
-                .csrf(csrf -> csrf.disable())
+                .csrf(csrf ->
+                        csrf.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
+//                .ignoringRequestMatchers("/auth/registration"))
                 .userDetailsService(personDetailService);
         return http.build();
     }
