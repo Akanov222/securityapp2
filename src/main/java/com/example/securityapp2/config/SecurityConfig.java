@@ -36,7 +36,8 @@ public class SecurityConfig {
                         .permitAll() // Разрешаем доступ всем к странице входа
                 )
                 .logout(logout -> logout
-                        .logoutSuccessUrl("/login")
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/auth/login")
                         .permitAll()
                 ) // Разрешаем выход всем
                 .csrf(csrf -> csrf.disable())
