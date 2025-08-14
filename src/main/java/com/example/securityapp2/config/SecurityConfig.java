@@ -25,12 +25,14 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/login", "/css/**", "/js/**").permitAll()
+                        .requestMatchers("/auth/login", "/css/**", "/js/**").permitAll()
                                 .anyRequest().authenticated() // Все остальные запросы требуют аутентификации
                 )
                 .formLogin(form -> form
-                        .loginPage("/login") // Страница входа
+                        .loginPage("/auth/login") // Страница входа
+                        .loginProcessingUrl("/process_login")
                         .defaultSuccessUrl("/hello", true)
+                        .failureUrl("/auth/login?error")
                         .permitAll() // Разрешаем доступ всем к странице входа
                 )
                 .logout(logout -> logout
