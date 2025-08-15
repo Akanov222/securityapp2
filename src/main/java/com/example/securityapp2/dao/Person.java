@@ -22,6 +22,9 @@ public class Person {
     @Column(name = "password")
     private String password;
 
+    @Column(name =  "role")
+    private String role;
+
     public Person(Integer id, String username, String password) {
         this.id = id;
         this.username = username;
@@ -55,15 +58,33 @@ public class Person {
         this.password = password;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
-        return Objects.equals(username, person.username) && Objects.equals(password, person.password);
+        return Objects.equals(username, person.username) && Objects.equals(password, person.password) && Objects.equals(role, person.role);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(username, password);
+        return Objects.hash(username, password, role);
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                '}';
     }
 }
