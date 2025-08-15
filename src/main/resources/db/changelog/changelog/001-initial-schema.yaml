@@ -2,6 +2,7 @@ databaseChangeLog:
   - changeSet:
       id: 1
       author: your_name
+      validCheckSum: 9:045b0c692543b46a2eae20595b312f53
 #      validCheckSum: ANY
       changes:
         - createTable:
@@ -24,3 +25,6 @@ databaseChangeLog:
                   type: VARCHAR
                   constraints:
                     nullable: false
+              - column:
+                  name: role
+                  type: VARCHAR(60)

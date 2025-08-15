@@ -2,6 +2,7 @@ databaseChangeLog:
   - changeSet:
       id: 2
       author: your_name
+      validCheckSum: 9:70cc26a43786837e6d5ec86e3c2beeba
       changes:
         - insert:
             tableName: person
@@ -11,7 +12,10 @@ databaseChangeLog:
                   value: "text_user1"
               - column:
                   name: password
-                  value: 111
+                  value: "111"
+              - column:
+                  name: role
+                  value: "ROLE_USER"
         - insert:
             tableName: person
             columns:
@@ -20,4 +24,19 @@ databaseChangeLog:
                   value: "text_user2"
               - column:
                   name: password
-                  value: 111
+                  value: "111"
+              - column:
+                  name: role
+                  value: "ROLE_USER"
+        - insert:
+            tableName: person
+            columns:
+              - column:
+                  name: username
+                  value: "text_user3"
+              - column:
+                  name: password
+                  value: "111"
+              - column:
+                  name: role
+                  value: "ROLE_USER"

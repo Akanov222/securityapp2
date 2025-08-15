@@ -2,10 +2,11 @@ package com.example.securityapp2.security;
 
 import com.example.securityapp2.dao.Person;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.List;
+import java.util.Collections;
 
 public class PersonDetails implements UserDetails {
 
@@ -17,7 +18,9 @@ public class PersonDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(); // Роли, возвращаем список прав
+        return Collections.singletonList((
+                new SimpleGrantedAuthority(person.getRole())));
+        // Роли, возвращаем список прав
     }
 
     @Override
